@@ -742,7 +742,7 @@ int npy_get_floatstatus_barrier(char *param)
     /*
      * By using a volatile, the compiler cannot reorder this call
      */
-#if defined(_WIN64)
+#if defined(_WIN64) || defined(_M_ARM) || defined(_M_ARM64)
     int fpstatus = _statusfp();
 #else
     /* windows enables sse on 32 bit, so check both flags */
